@@ -113,7 +113,6 @@ $(document).ready(function () {
         game : {
             //charge un niveau et lance la boucle principale
             start : function(context) {
-                context.storage.currentLevel = 4;
                 context.game.load(context);
                 context.game.loop(context);
             },
