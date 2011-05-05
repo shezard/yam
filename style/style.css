@@ -1,15 +1,37 @@
-#menu {
-    cursor: pointer;
+body {
     font-family: Rockwell,sans-serif;
-    font-weight: bold;
-    left: 100px;
-    position: absolute;
-    text-shadow: 1px 1px 1px #CCCCCC;
-    top: 100px;
-    text-decoration: underline;
 }
 
-#menu:hover {
+#menu {
+    position : relative;
+    top: 100px;
+    left: 300px;
+    width : 500px;
+}
+
+h1 {
+    margin : 3px 0px;
+}
+
+.small {
+    font-size : 0.7em;
+    color : #333;
+}
+
+#start {
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    text-shadow: 1px 1px 1px #CCCCCC;
+    text-decoration: underline blink;
+    background-image : url('../img/coin.png');
+    background-repeat : no-repeat;
+    padding-left : 20px;
+    line-height: 0.9em;
+    height : 40px;
+}
+
+#start:hover {
     text-decoration: none;
     color : #003333
 }
@@ -23,26 +45,53 @@
     width : 960px;
     height : 540px;
     margin : 0 auto;
-    border : thin solid black;
+}
+
+#hp {
+    position : relative;
+    left : 40px;
+    top : 37px;
+    height : 30px;
+    color :red;
+    font-size : 1.4em;
+    width : 200px;
 }
 
 #player {
     position : absolute;
     background-image : url('../img/sprites-test.png');
+    z-index : 200;
 }
 
 #inventory {
     border: thin solid black;
     margin: 50px auto;
-    padding: 5px;
+    padding: 12px 5px 5px;
     position: relative;
     width: 100px;
+    background-color: white;
+    line-height : 12px;
+    z-index : 1000;
+}
+
+.itemEquipable {
+    border : thin solid black;
+    padding : 3px 0 6px ;
+    cursor : pointer;
+}
+
+.itemEquiped {
+    border : thin solid green;
+    padding : 3px 0 6px ;
+    cursor : pointer;
 }
 
 .itemImage {
     position : relative;
     width : 16px;
     height : 16px;
+    float : left;
+    margin : 0px 6px;
 }
 
 #dialog {
@@ -51,6 +100,20 @@
     padding: 5px;
     position: relative;
     width: 100px;
+    background-color: white;
+    z-index : 1000;
+}
+
+.level0 {
+
+}
+
+.level1 {
+
+}
+
+.level2 {
+
 }
 
 .stateless {
@@ -73,16 +136,44 @@
     background-position: -16px -26px;
 }
 
-.climb {
+.state-climb-right-step-1,.state-climb-right-step-2,.state-climb-left-step-1,.state-climb-left-step-2 {
     background-position : 0px -52px;
 }
 
-.hurt {
-    background-position: -16px -52px;
+.state-hurt-right-step-2 {
+    background-position: -32px -0px;
+}
+
+.state-hurt-right-step-1 {
+    background-position: -48px -0px;
+}
+
+.state-hurt-left-step-2 {
+    background-position: -32px -26px;
+}
+
+.state-hurt-left-step-1 {
+    background-position: -48px -26px;
 }
 
 .common {
     position : absolute;
+}
+
+.hp {
+    background-image: url('../img/hp.png');
+    height: 5px;
+    margin-bottom: -1px;
+    margin-left: 20%/*5px*/;
+    position: absolute;
+    top: -5px;
+    width: 60%/*20px*/;
+    background-repeat: no-repeat;
+    background-size : 100% 100%;
+}
+
+.dying {
+    -moz-transform : rotate(180deg);
 }
 
 .grass {
@@ -111,16 +202,22 @@
     background-image : url('../img/coin.png');
 }
 
-.ghost_static {
-    background-image : url('../img/ghost-r.png');
-}
-
 .ghost[class~="step-0"] {
     background-image : url('../img/ghost-r.png');
 }
 
 .ghost[class~="step-1"] {
     background-image : url('../img/ghost-l.png');
+}
+
+.ghost_water[class~="step-0"],.ghost_water[class~="step-1"] {
+    background-image : url('../img/ghost-water-r.png');
+    z-index : 25;
+}
+
+.ghost_water[class~="step-2"],.ghost_water[class~="step-3"] {
+    background-image : url('../img/ghost-water-l.png');
+    z-index : 25;
 }
 
 .door {
@@ -145,18 +242,43 @@
 
 .water {
     background-color : blue;
+    background-image : url('../img/water.png');
 }
 
 .lever[class~="on"] {
-    border : thin solid black;
-    background-color : white;
+    background-image : url('../img/lever-on.png');
 }
 
 .lever[class~="off"] {
-    background-color : black;
-    border : none;
+    background-image : url('../img/lever-off.png');
 }
 
-.text {
-    background-color : green;
+.sign {
+    background-image : url('../img/sign.png');
+}
+
+.hammer {
+    background-image : url('../img/hammer.png');
+}
+
+.coin2 {
+    background-image : url('../img/coin.png');
+}
+
+.smallBloc {
+    background-image : url('../img/1x1.png');
+}
+
+.crate {
+    background-image : url('../img/crate.png');
+}
+
+.boss[class~="step-1"],.boss[class~="step-2"] {
+    background-image : url('../img/ghost-l.png');
+    background-size : 100% 100%;
+}
+
+.boss[class~="step-0"],.boss[class~="step-3"] {
+    background-image : url('../img/ghost-r.png');
+    background-size : 100% 100%;
 }

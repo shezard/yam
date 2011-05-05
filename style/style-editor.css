@@ -5,11 +5,22 @@ body {
 #conf {
     border : thin solid black;
     position : absolute;
-    padding : 5px;
+    padding : 10px;
+    text-align: center;
+    line-height : 2em;
 }
 
 #add,#show {
     cursor : pointer;
+    border : thin solid;
+    padding : 0 10px;
+    box-shadow : 1px 0px 1px #ccc;
+    border-radius : 5px;
+}
+
+#add:hover,#show:hover {
+    /*box-shadow : none;*/
+    box-shadow : 0 -1px 0 rgba(0,0,0,0.2);
 }
 
 #game-area {
@@ -28,14 +39,37 @@ body {
     height : 30px
 }
 
-#form {
+#form,#blocEditor {
     display : none;
-    position: relative;
+    position: absolute;
     top : 50px;
     left: 50px;
-    width : 200px;
-    height : 215px;
+    width : 160px;
+    padding : 10px;
     border : thin solid black;
+    line-height : 2.5em;
+    z-index : 200;
+    background-color : white;
+}
+
+#remove {
+    text-align: center;
+}
+
+#remove-text {
+    border : thin solid black;
+    padding : 0 33px;
+    box-shadow : 0px 1px 1px #ccc;
+}
+
+#remove-text:hover {
+    box-shadow : none;
+}
+
+#form > input,#form > select,#blocEditor > input,#blocEditor > select {
+    float: right;
+    position: relative;
+    top: 11px;
 }
 
 #info {
@@ -56,24 +90,30 @@ body {
     position : relative;
 }
 
-#ok,#cancel {
+#ok,#cancel,#bok,#bcancel {
     position : relative;
     padding : 5px;
     padding-top : 5px;
     margin-top: 10px;
     cursor: pointer;
+    border-radius : 5px;
+    box-shadow: 0 1px 1px #CCCCCC;
 }
 
-#ok  {
+#ok:hover,#cancel:hover,#bok:hover,#bcancel:hover {
+    box-shadow : none;
+}
+
+#ok,#bok  {
     border : thin solid #0F0;
-    margin-right : 5px;
+    margin-right : 20px;
 }
 
-#cancel {
+#cancel,#bcancel {
     border : thin solid #F00;
 }
 
-common {
+.common {
     position : absolute;
 }
 
@@ -103,15 +143,31 @@ common {
     background-image : url('../img/coin.png');
 }
 
-.ghost {
+.ghost_static {
     background-image : url('../img/ghost-r.png');
+}
+
+.ghost[class~="step-0"] {
+    background-image : url('../img/ghost-r.png');
+}
+
+.ghost[class~="step-1"] {
+    background-image : url('../img/ghost-l.png');
 }
 
 .door {
     background-image : url('../img/door.png');
 }
 
+.door[class~="open"] {
+    background-image : url('../img/door-open.png');
+}
+
 .key1 {
+    background-image : url('../img/key.png');
+}
+
+.key2 {
     background-image : url('../img/key.png');
 }
 
@@ -121,4 +177,30 @@ common {
 
 .water {
     background-color : blue;
+}
+
+.lever[class~="on"] {
+    border : thin solid black;
+    background-color : white;
+}
+
+.lever[class~="off"] {
+    background-color : black;
+    border : none;
+}
+
+.text {
+    background-color : green;
+}
+
+.sword {
+    background-image : url('../img/sword.png');
+}
+
+.coin2 {
+    background-image : url('../img/coin.png');
+}
+
+.smallBloc {
+    background-image : url('../img/1x1.png');
 }

@@ -11,15 +11,29 @@
     </head>
     <body>
         <div id="conf">
-            <span id="add">+ add</span><br/>
+            <span id="add">+ add&nbsp;</span><br/>
             <span id="show">- show</span><br/>
-            <label for="l">l:</label><input id="l" type="text" value="0"/><br/>
+<!--            <label for="l">l : </label><input id="l" type="text" value="0"/><br/>-->
         </div>
         <div id="game-area">
             <div id="form">
-                    <label for="c">c:</label><input id="c" type="text"/>
-                    <label for="p">p:</label><select id="p"></select>
-                    <span id="ok">ok</span><span id="cancel">cancel</span>
+                <label for="c">c : </label><input id="c" type="text"/><br/>
+                <label for="p">p : </label><select id="p"></select><br/>
+                <div id="m"><label for="mcheck">m : </label><input id="mcheck" type="checkbox"/></div>
+                <div id="o"><label for="ocheck">o : </label><input id="ocheck" type="checkbox"/></div>
+                <div style="text-align : center">
+                    <span id="ok">&nbsp;&nbsp;&nbsp;ok&nbsp;&nbsp;&nbsp;</span><span id="cancel">cancel</span>
+                </div>
+            </div>
+            <div id="blocEditor">
+                <label for="bc">c : </label><input id="bc" type="text"/><br/>
+                <label for="bp">p : </label><select id="bp"></select><br/>
+                <div id="bm"><label for="bmcheck">m : </label><input id="bmcheck" type="checkbox"/></div>
+                <div id="bo"><label for="bocheck">o : </label><input id="bocheck" type="checkbox"/></div>
+                <div id="remove"><span id="remove-text"> remove bloc</span></div>
+                <div style="text-align : center">
+                    <span id="bok">&nbsp;&nbsp;&nbsp;ok&nbsp;&nbsp;&nbsp;</span><span id="bcancel">cancel</span>
+                </div>
             </div>
         </div>
     </body>
