@@ -1,0 +1,124 @@
+body {
+    font-family: Rockwell;
+}
+
+#conf {
+    border : thin solid black;
+    position : absolute;
+    padding : 5px;
+}
+
+#add,#show {
+    cursor : pointer;
+}
+
+#game-area {
+    position : relative;
+    width : 960px;
+    height : 540px;
+    margin : 0 auto;
+    border : thin solid black;
+}
+
+.common {
+    position : absolute;
+    top : 0px;
+    left : 0px;
+    width : 30px;
+    height : 30px
+}
+
+#form {
+    display : none;
+    position: relative;
+    top : 50px;
+    left: 50px;
+    width : 200px;
+    height : 215px;
+    border : thin solid black;
+}
+
+#info {
+    position: relative;
+    width: 167px;
+    height : 170px;
+    padding : 5px;
+    margin-bottom: 10px;
+}
+
+#info > div {
+    float: right;
+}
+
+#button {
+    margin-left: 55px;
+    top : -13px;
+    position : relative;
+}
+
+#ok,#cancel {
+    position : relative;
+    padding : 5px;
+    padding-top : 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#ok  {
+    border : thin solid #0F0;
+    margin-right : 5px;
+}
+
+#cancel {
+    border : thin solid #F00;
+}
+
+common {
+    position : absolute;
+}
+
+.grass {
+    background-image : url('../img/grass.png');
+}
+
+.grass-wall {
+    background-image : url('../img/grass.png');
+    background-repeat: repeat-x;
+    background-color: #7c5c30;
+}
+
+.wall {
+    background-image: url('../img/vertical-curl.png');
+}
+
+.ceil {
+    background-image: url('../img/horizontal-curl.png');
+}
+
+.foo {
+    border : 3px solid green;
+}
+
+.coin {
+    background-image : url('../img/coin.png');
+}
+
+.ghost {
+    background-image : url('../img/ghost-r.png');
+}
+
+.door {
+    background-image : url('../img/door.png');
+}
+
+.key1 {
+    background-image : url('../img/key.png');
+}
+
+.ladder {
+    background-image : url('../img/ladder.png');
+}
+
+.water {
+    background-color : blue;
+}
