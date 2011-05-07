@@ -194,10 +194,6 @@ h1 {
     background-image: url('../img/horizontal-curl.png');
 }
 
-.foo {
-    border : 3px solid green;
-}
-
 .coin {
     background-image : url('../img/coin.png');
 }
@@ -259,10 +255,6 @@ h1 {
 
 .hammer {
     background-image : url('../img/hammer.png');
-}
-
-.coin2 {
-    background-image : url('../img/coin.png');
 }
 
 .smallBloc {

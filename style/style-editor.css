@@ -135,10 +135,6 @@ body {
     background-image: url('../img/horizontal-curl.png');
 }
 
-.foo {
-    border : 3px solid green;
-}
-
 .coin {
     background-image : url('../img/coin.png');
 }
@@ -189,18 +185,28 @@ body {
     border : none;
 }
 
-.text {
-    background-color : green;
+.sign {
+    background-image : url('../img/sign.png');
 }
 
-.sword {
-    background-image : url('../img/sword.png');
-}
-
-.coin2 {
-    background-image : url('../img/coin.png');
+.hammer {
+    background-image : url('../img/hammer.png');
 }
 
 .smallBloc {
     background-image : url('../img/1x1.png');
+}
+
+.crate {
+    background-image : url('../img/crate.png');
+}
+
+.boss[class~="step-1"],.boss[class~="step-2"] {
+    background-image : url('../img/ghost-l.png');
+    background-size : 100% 100%;
+}
+
+.boss[class~="step-0"],.boss[class~="step-3"] {
+    background-image : url('../img/ghost-r.png');
+    background-size : 100% 100%;
 }
