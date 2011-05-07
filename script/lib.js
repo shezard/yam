@@ -105,7 +105,6 @@ $(document).ready(function () {
             show : function(context){
                 $('body').append('<div id="menu"><h1>Y<span class="small">et</span> A<span class="small">nother</span> M<span class="small">ario</span></h1><span id="start">Insert Me </span><br/><br/><span class="info">Controls : z &uarr;,q &larr;,d &rarr;,s Action,space Use items</span></div>');
                 $('#start').click(function(){
-                    //                    context.storage.currentLevel = 4;
                     context.game.start(context);
                     context.menu.hide();
                 });
@@ -172,7 +171,25 @@ $(document).ready(function () {
                     window.scrollTo(0,0);
                     $('body').append('<div id="menu"><h1>G<span class="small">ame</span> O<span class="small">ver</span></h1><span id="start">Restart ?</span></div>');
                     $('#start').bind('click',function(){
-                        window.location.reload();
+                        
+                        context.storage.currentLevel = 0;
+                        context.storage.running = false;
+                        
+                        context.player.vx = 0;
+                        context.player.vy = 0;
+                        context.player.x = 40;
+                        context.player.y = 480;
+                        context.player.w = 16;
+                        context.player.h = 26;
+                        context.player.hp = 3;
+                        context.player.immune = false;
+                        context.player.floor = false;
+                        context.player.collide = false;
+                        context.player.inventory = [];
+                        
+                        context.loadJson();
+                        context.menu.hide();
+                        context.game.load(context);
                     });
                 });
             }
@@ -440,12 +457,12 @@ $(document).ready(function () {
                         this.direction = 'left';
                     }
                 }
-            //                window.scrollTo((this.x-480), (this.y-540));
-            //                if((this.x-480) > 40) {
-            //                    $('#hp').css('left',(this.x-480)+'px');
-            //                } else {
-            //                    $('#hp').css('left','40px');
-            //                }
+                //                window.scrollTo((this.x-480), (this.y-540));
+                //                if((this.x-480) > 40) {
+                //                    $('#hp').css('left',(this.x-480)+'px');
+                //                } else {
+                //                    $('#hp').css('left','40px');
+                //                }
 
             },
             showHeart : function(hp) {
@@ -966,9 +983,9 @@ $(document).ready(function () {
         main.player.equiped = item;
         main.player.toggleInventory(main);
         main.player.toggleInventory(main);
-    //TODO remove the double toggle hack
-    //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
-    //$(this).removeClass().addClass('itemEquiped '+$(this).html());
+        //TODO remove the double toggle hack
+        //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
+        //$(this).removeClass().addClass('itemEquiped '+$(this).html());
 
     });
     
