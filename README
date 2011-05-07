@@ -1,7 +1,5 @@
-This is just a github test, feel free to fork my yam
+Use game.html to play this copycat of mario
 
-game.html is the plateformer itself
+Use editor.html to generate the json of a level, then place this json in the levels.js file
 
-editor.html is the game editor
-
---Shezard
+--Shezard--
