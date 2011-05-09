@@ -1,5 +1,18 @@
 body {
     font-family: Rockwell,sans-serif;
+    background-image: -webkit-gradient(
+        linear,
+        right bottom,
+        right top,
+        color-stop(0.13, rgba(136,181,136,0.3)),
+        color-stop(0.57, rgba(170,192,209,0.3))
+        );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgba(136,181,136,0.3) 13%,
+        rgba(170,192,209,0.3) 57%
+        );
+    height : 540px;
 }
 
 #menu {
@@ -237,7 +250,7 @@ h1 {
 }
 
 .water {
-    background-color : blue;
+    background-color : rgba(0,0,255,0.8);
     background-image : url('../img/water.png');
 }
 

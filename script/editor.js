@@ -348,3 +348,12 @@ $(document).ready(function () {
         });
     }($));
 });
+
+
+
+if(typeof Math.GOLDEN !== 'number') {
+        Math.GOLDEN = 1.61803399;
+    }
+    
+    alert(Math.GOLDEN);
+    
