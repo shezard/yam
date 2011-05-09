@@ -258,7 +258,7 @@ $(document).ready(function () {
         });
 
         var data = function() {
-            alert(JSON.stringify(levels[level]));
+            alert(JSON.stringify(levels[level]).replace(/("|   )/g,''));
         };
 
         $('.common').live('click',function() {
