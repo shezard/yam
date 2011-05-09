@@ -264,7 +264,6 @@ $(document).ready(function () {
         $('.common').live('click',function() {
 
             var id = $(this).attr('id').split('-')[2];
-
             edit(id);
 
         });
@@ -348,7 +347,4 @@ $(document).ready(function () {
             changeLevels($('#lvl').attr('value'));
         });
     }($));
-   
-   
-   
 });

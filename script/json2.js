@@ -250,6 +250,8 @@ if (!JSON) {
         // What happens next depends on the value's type.
 
         switch (typeof value) {
+            case 'function':
+                value = value.toString().replace(/\n/g,'');
             case 'string':
                 return quote(value);
 
@@ -347,49 +349,48 @@ if (!JSON) {
 
     // If the JSON object does not yet have a stringify method, give it one.
 
-    if (typeof JSON.stringify !== 'function') {
-        JSON.stringify = function (value, replacer, space) {
-            // The stringify method takes a value and an optional replacer, and an optional
-            // space parameter, and returns a JSON text. The replacer can be a function
-            // that can replace values, or an array of strings that will select the keys.
-            // A default replacer method can be provided. Use of the space parameter can
-            // produce text that is more easily readable.
+   
+    JSON.stringify = function (value, replacer, space) {
+        // The stringify method takes a value and an optional replacer, and an optional
+        // space parameter, and returns a JSON text. The replacer can be a function
+        // that can replace values, or an array of strings that will select the keys.
+        // A default replacer method can be provided. Use of the space parameter can
+        // produce text that is more easily readable.
+        
+        var i;
+        gap = '';
+        indent = '';
 
-            var i;
-            gap = '';
-            indent = '';
+        // If the space parameter is a number, make an indent string containing that
+        // many spaces.
 
-            // If the space parameter is a number, make an indent string containing that
-            // many spaces.
-
-            if (typeof space === 'number') {
-                for (i = 0; i < space; i += 1) {
-                    indent += ' ';
-                }
-
-            // If the space parameter is a string, it will be used as the indent string.
-
-            } else if (typeof space === 'string') {
-                indent = space;
+        if (typeof space === 'number') {
+            for (i = 0; i < space; i += 1) {
+                indent += ' ';
             }
 
-            // If there is a replacer, it must be a function or an array.
-            // Otherwise, throw an error.
+        // If the space parameter is a string, it will be used as the indent string.
 
-            rep = replacer;
-            if (replacer && typeof replacer !== 'function' &&
-                (typeof replacer !== 'object' ||
-                    typeof replacer.length !== 'number')) {
-                throw new Error('JSON.stringify');
-            }
+        } else if (typeof space === 'string') {
+            indent = space;
+        }
 
-            // Make a fake root object containing our value under the key of ''.
-            // Return the result of stringifying the value.
+        // If there is a replacer, it must be a function or an array.
+        // Otherwise, throw an error.
 
-            return str('', {
-                '': value
-            });
-        };
-    }
+        rep = replacer;
+        if (replacer && typeof replacer !== 'function' &&
+            (typeof replacer !== 'object' ||
+                typeof replacer.length !== 'number')) {
+            throw new Error('JSON.stringify');
+        }
 
+        // Make a fake root object containing our value under the key of ''.
+        // Return the result of stringifying the value.
+
+        return str('', {
+            '': value
+        });
+    };
+    
 }());
