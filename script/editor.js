@@ -62,42 +62,51 @@ $(document).ready(function () {
     (function($) {
         
         var generateOptionList = function(array) {
-            return ('<option>'+array.join('</option><option>')+'</option>')
+            if(typeof array === 'number') {
+                var i,result = '';
+                for(i = 0; i < array ; i += 1) {
+                    result += '<option>'+i+'</option>';
+                }
+                return result;
+                
+            }else {
+                return ('<option>'+array.join('</option><option>')+'</option>');
+            }
         }
         
         var cClasses = [
-            'grass',
-            'grass-wall',
-            'wall',
-            'ceil',
-            'coin',
-            'ghost step-0',
-            'ghost step-1',
-            'door',
-            'door open',
-            'key1',
-            'key2',
-            'ladder',
-            'water',
-            'lever on',
-            'lever off',
-            'sign',
-            'hammer',
-            'smallBloc',
-            'crate'
+        'grass',
+        'grass-wall',
+        'wall',
+        'ceil',
+        'coin',
+        'ghost step-0',
+        'ghost step-1',
+        'door',
+        'door open',
+        'key1',
+        'key2',
+        'ladder',
+        'water',
+        'lever on',
+        'lever off',
+        'sign',
+        'hammer',
+        'smallBloc',
+        'crate'
         ];
         
         var pClasses = [
-            'blocking',
-            'hurtable',
-            'collectable',
-            'equipable',
-            'openable',
-            'climbable',
-            'swimable',
-            'toggable',
-            'readable',
-            'accelerator'
+        'blocking',
+        'hurtable',
+        'collectable',
+        'equipable',
+        'openable',
+        'climbable',
+        'swimable',
+        'toggable',
+        'readable',
+        'accelerator'
         ];
         
         var level = 0;
@@ -107,11 +116,12 @@ $(document).ready(function () {
         var levels = [{
             blocs : []
         }];
-
+    
+        levels = window.levels;
+        
         var bloc;
-
-        //$('#p').append('<option>blocking</option><option>hurtable</option><option>collectable</option><option>equipable</option><option>openable</option><option>climbable</option><option>swimable</option><option>toggable</option><option>readable</option><option>accelerator</option>');
-        //$('#bp').append('<option>blocking</option><option>hurtable</option><option>collectable</option><option>equipable</option><option>openable</option><option>climbable</option><option>swimable</option><option>toggable</option><option>readable</option><option>accelerator</option>');
+        
+        $('#lvl').append(generateOptionList(levels.length));
         
         $('#c').append(generateOptionList(cClasses));
         $('#bc').append(generateOptionList(cClasses));
