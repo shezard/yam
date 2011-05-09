@@ -258,12 +258,7 @@ $(document).ready(function () {
         });
 
         var data = function() {
-            alert(JSON.stringify(levels[level]),function(key,value) {
-                if (typeof value === 'number' && !isFinite(value)) {
-                    return String(value);
-                }
-                return value;
-            });
+            alert(JSON.stringify(levels[level]));
         };
 
         $('.common').live('click',function() {
