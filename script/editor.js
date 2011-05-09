@@ -69,30 +69,34 @@ $(document).ready(function () {
             var i;
             
             for(i = 0; i < levels[idLevel].blocs.length ; i += 1) {
-                $('#game-area').append('<div id="bloc-'+idLevel+'-'+i+'" class="common '+levels[idLevel].blocs[i].c+' '+levels[idLevel].blocs[i].p+'"></div>');
-                $('#game-area > *:last').css({
-                    top : levels[idLevel].blocs[i].y+'px',
-                    left : levels[idLevel].blocs[i].x+'px',
-                    width : levels[idLevel].blocs[i].w+'px',
-                    height : levels[idLevel].blocs[i].h+'px',
-                    position : 'absolute'
-                });
-                $('#game-area > *:last').draggable({
-                    grid : [15,15],
-                    stop: function(event, ui) {
-                        var who = ui.helper.attr('id').split('-')[2];
-                        levels[level].blocs[who].x = ui.position.left;
-                        levels[level].blocs[who].y = ui.position.top;
-                    }
-                });
-                $('#game-area > *:last').resizable({
-                    grid : [15,15],
-                    stop: function(event, ui) {
-                        var who = ui.helper.attr('id').split('-')[2];
-                        levels[level].blocs[who].w = parseInt(ui.helper.css('width'),10);
-                        levels[level].blocs[who].h = parseInt(ui.helper.css('height'),10);
-                    }
-                });
+                
+                if(levels[idLevel].blocs[i].hasOwnProperty('i')) {
+                    
+                    $('#game-area').append('<div id="bloc-'+idLevel+'-'+i+'" class="common '+levels[idLevel].blocs[i].c+' '+levels[idLevel].blocs[i].p+'"></div>');
+                    $('#game-area > *:last').css({
+                        top : levels[idLevel].blocs[i].y+'px',
+                        left : levels[idLevel].blocs[i].x+'px',
+                        width : levels[idLevel].blocs[i].w+'px',
+                        height : levels[idLevel].blocs[i].h+'px',
+                        position : 'absolute'
+                    });
+                    $('#game-area > *:last').draggable({
+                        grid : [15,15],
+                        stop: function(event, ui) {
+                            var who = ui.helper.attr('id').split('-')[2];
+                            levels[level].blocs[who].x = ui.position.left;
+                            levels[level].blocs[who].y = ui.position.top;
+                        }
+                    });
+                    $('#game-area > *:last').resizable({
+                        grid : [15,15],
+                        stop: function(event, ui) {
+                            var who = ui.helper.attr('id').split('-')[2];
+                            levels[level].blocs[who].w = parseInt(ui.helper.css('width'),10);
+                            levels[level].blocs[who].h = parseInt(ui.helper.css('height'),10);
+                        }
+                    });
+                }
             }
         };
         
@@ -263,15 +267,15 @@ $(document).ready(function () {
                     if(bloc.hasOwnProperty('m')) {
                         options += ',\nm : {';
                         for(m in bloc.m) {
-//                            options+= m+'\n';
-                        }
+                            //                            options+= m+'\n';
+                            }
                         options  +='} ';
                     }
                     if(bloc.hasOwnProperty('o')) {
                         options += ',\no : {';
                         for(o in bloc.o) {
-//                            options+= o+'\n';
-                        }
+                            //                            options+= o+'\n';
+                            }
                         options  +='} ';
                     }
 
