@@ -265,18 +265,18 @@ $(document).ready(function () {
                 if(bloc.hasOwnProperty('i')) {
                     var options = '',o,m;
                     if(bloc.hasOwnProperty('m')) {
-                        options += ',\nm : {';
+                        options += ',\nm : {\n';
                         for(m in bloc.m) {
-                            //                            options+= m+'\n';
-                            }
-                        options  +='} ';
+                            options+= '\t'+m+' : '+bloc[m]+',\n';
+                        }
+                        options  +='\t} ';
                     }
                     if(bloc.hasOwnProperty('o')) {
-                        options += ',\no : {';
+                        options += ',\no : {\n';
                         for(o in bloc.o) {
-                            //                            options+= o+'\n';
-                            }
-                        options  +='} ';
+                            options+= '\t'+o+' : '+bloc[o]+',\n';
+                        }
+                        options  +='\t} ';
                     }
 
                     result += '{\ni : '+j+',\nc : \''+bloc.c+'\',\np : \''+bloc.p+'\',\nx : '+bloc.x+',\ny : '+bloc.y+',\nw : '+bloc.w+',\nh : '+bloc.h+options+'\n}';
