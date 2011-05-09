@@ -258,63 +258,13 @@ $(document).ready(function () {
         });
 
         var data = function() {
-            var result = 'blocs : [';
-            var i,j = 1,k,l;
-            for(i = 0 ; i < levels[level].blocs.length ; i++) {
-                var bloc = levels[level].blocs[i];
-                k = 0;
-                l = 0;
-                if(bloc.hasOwnProperty('i')) {
-                    var options = '',o,m;
-                    if(bloc.hasOwnProperty('m')) {
-                        options += ',\n\tm : {\n';
-                        for(m in bloc.m) {
-                            if(typeof bloc.m[m] !== 'object'){
-                                if(typeof bloc.m[m] === 'string') {
-                                    options += '\t\t'+m+' :\''+bloc.m[m]+'\'';
-                                } else {
-                                    options += '\t\t'+m+' :'+bloc.m[m];
-                                }
-                            } else if(typeof bloc.m[m] === 'object') {
-                                options += bloc.m[m].join(',');
-                            }
-                            if(l !== (bloc.m).length -1) {
-                                options += ',';
-                            }
-                            options += '\n';
-                            l += 1;
-                        }
-                        options  +='\t} ';
-                    }
-                    if(bloc.hasOwnProperty('o')) {
-                        options += ',\n\to : {\n';
-                        for(o in bloc.o) {
-                            if(typeof bloc.o[o] !== 'object'){
-                                if(typeof bloc.o[o] === 'string') {
-                                    options += '\t\t'+o+' : \''+bloc.o[o]+'\'';
-                                } else {
-                                    options += '\t\t'+o+' :'+bloc.o[o];
-                                }
-                                options += ',';
-                            } else if(typeof bloc.o[o] === 'object') {
-                                options += '\t\t['+bloc.o[o].join(',')+']';
-                            }
-                            options += '\n';
-                            k += 1;
-                        }
-                        options  +='} ';
-                    }
-
-                    result += '{\n\ti : '+j+',\n\tc : \''+bloc.c+'\',\n\tp : \''+bloc.p+'\',\n\tx : '+bloc.x+',\n\ty : '+bloc.y+',\n\tw : '+bloc.w+',\n\th : '+bloc.h+options+'\n}';
-                    j += 1;
-                    if(i !== levels[level].blocs.length -1) {
-                        result += ',';
-                    }
+            alert(JSON.stringify(levels[level]),function(key,value) {
+                if (typeof value === 'number' && !isFinite(value)) {
+                    return String(value);
                 }
-            }
-            result += ']';
-            alert(result);
-        }
+                return value;
+            });
+        };
 
         $('.common').live('click',function() {
 
@@ -403,5 +353,7 @@ $(document).ready(function () {
             changeLevels($('#lvl').attr('value'));
         });
     }($));
-
+   
+   
+   
 });
