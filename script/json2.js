@@ -218,7 +218,7 @@ if (!JSON) {
             var c = meta[a];
             return typeof c === 'string' ? c :
             '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-        }) + '"' : '"' + string + '"';
+        }) + "'" : "'" + string + "'";
     }
 
 
@@ -251,7 +251,8 @@ if (!JSON) {
 
         switch (typeof value) {
             case 'function':
-                value = value.toString().replace(/\n/g,'');
+                //value = value.toString().replace(/\n/g,'');
+                return value;
             case 'string':
                 return quote(value);
 
@@ -318,7 +319,7 @@ if (!JSON) {
                             k = rep[i];
                             v = str(k, value);
                             if (v) {
-                                partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                                partial.push(k + (gap ? ': ' : ':') + v);
                             }
                         }
                     }
@@ -330,7 +331,7 @@ if (!JSON) {
                         if (Object.prototype.hasOwnProperty.call(value, k)) {
                             v = str(k, value);
                             if (v) {
-                                partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                                partial.push(k + (gap ? ': ' : ':') + v);
                             }
                         }
                     }
