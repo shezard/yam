@@ -267,14 +267,14 @@ $(document).ready(function () {
                     if(bloc.hasOwnProperty('m')) {
                         options += ',\nm : {\n';
                         for(m in bloc.m) {
-                            options+= '\t'+m+' : '+bloc[m]+',\n';
+                            options+= '\t'+m+' : '+bloc.m[m]+',\n';
                         }
                         options  +='\t} ';
                     }
                     if(bloc.hasOwnProperty('o')) {
                         options += ',\no : {\n';
                         for(o in bloc.o) {
-                            options+= '\t'+o+' : '+bloc[o]+',\n';
+                            options+= '\t'+o+' : '+bloc.o[o]+',\n';
                         }
                         options  +='\t} ';
                     }
