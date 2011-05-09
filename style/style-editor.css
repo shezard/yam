@@ -140,7 +140,7 @@ body {
     background-image : url('../img/coin.png');
 }
 
-.ghost_static {
+.ghost {
     background-image : url('../img/ghost-r.png');
 }
 
@@ -177,13 +177,11 @@ body {
 }
 
 .lever[class~="on"] {
-    border : thin solid black;
-    background-color : white;
+    background-image : url('../img/lever-on.png');
 }
 
 .lever[class~="off"] {
-    background-color : black;
-    border : none;
+    background-image : url('../img/lever-off.png');
 }
 
 .sign {
