@@ -29,10 +29,12 @@
  */
 
 /*
- * TODO : load default lvl ?
+ * TODO :
  *      add optionnal special case ? o : {}
  *      add movement special case ? m : {}
  *              implement movement inside the editor ?
+ *      add clean level
+ *      add new level 
  */
 
 /*
@@ -348,12 +350,3 @@ $(document).ready(function () {
         });
     }($));
 });
-
-
-
-if(typeof Math.GOLDEN !== 'number') {
-        Math.GOLDEN = 1.61803399;
-    }
-    
-    alert(Math.GOLDEN);
-    

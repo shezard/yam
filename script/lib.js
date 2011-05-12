@@ -81,11 +81,13 @@
  * add another basic ressources, aswell as some challenge
  * the ressources should be gold ? iron ? wood ? stone ?
  * upgrade the menu => loop animation ?
- * remove the current triggers and implements usefull ones
  * work on the scenario
  * add a vilain ? the evil from the js gentleman ?
  * add projectile (must be canMove() checked ... will be cpu exausting ...) ?
  * add loot for the breakable (ala hurtable)
+ * add localStorage (checkpoint => save inventory + hp + x + y + currentLevel)
+ * add an option to load the current level
+ * add a collidable checkpoint
  */
 
 $(document).ready(function () {
