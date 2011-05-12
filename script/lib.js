@@ -565,6 +565,9 @@ $(document).ready(function () {
                         case 'accelerator' :
                             this.accelerate(context);
                             break;
+                        case 'checkpoint' :
+                            this.save(context);
+                            break;
                     }
                 } else {
                     if(this.state !== 'hurt') {
@@ -696,6 +699,9 @@ $(document).ready(function () {
                         this.vx = context.levels[context.storage.currentLevel].blocs[(this.collide[0] -1)].o.vx;
                     }
                 }
+            },
+            save : function(context) {
+                alert('chekpoint');
             },
             toggleInventory : function(context) {
                 if(context.storage.running) {

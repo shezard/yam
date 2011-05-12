@@ -170,6 +170,14 @@ window.levels = [{
                     step : 0,
                     text : ['Closed !!']
                 }
+            },{
+                i : 15,
+                c : 'sign',
+                p : 'checkpoint',
+                x : 340,
+                y : 480,
+                w : 30,
+                h : 30
             }],
         triggers : [
             function(context){
