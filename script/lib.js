@@ -100,7 +100,7 @@ $(document).ready(function () {
         },
         //load le json (levels.json) puis affiche le menu
         loadJson : function() {
-            this.levels = window.levels;
+            this.levels = window.clone(window.levels);
         },
         //le createur de menu
         menu : {

@@ -5,6 +5,29 @@
  *  work and test this method
  */
 
+/*
+ * Fonction de clonage
+ * @author Keith Devens
+ * @see http://keithdevens.com/weblog/archive/2007/Jun/07/javascript.clone
+ */
+window.clone = function(srcInstance)
+{
+	/*Si l'instance source n'est pas un objet ou qu'elle ne vaut rien c'est une feuille donc on la retourne*/
+	if(typeof(srcInstance) != 'object' || srcInstance == null)
+	{
+		return srcInstance;
+	}
+	/*On appel le constructeur de l'instance source pour crée une nouvelle instance de la même classe*/
+	var newInstance = srcInstance.constructor();
+	/*On parcourt les propriétés de l'objet et on les recopies dans la nouvelle instance*/
+	for(var i in srcInstance)
+	{
+		newInstance[i] = clone(srcInstance[i]);
+	}
+	/*On retourne la nouvelle instance*/
+	return newInstance;
+}
+
 window.basePlayer = {
     reset : function(context) {
         context.player.vx = 0;
