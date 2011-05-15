@@ -688,7 +688,11 @@ $(document).ready(function () {
             },
             save : function(context) {
                 //alert('chekpoint');
-                sessionStorage.setItem('save',JSON.stringify({troll : 'b'}));
+                try {
+                    sessionStorage.setItem('save',JSON.stringify({troll : 'b'}));
+                } catch(e) {
+                    console.log('Your in local setup ?');
+                }
             },
             toggleInventory : function(context) {
                 if(context.storage.running) {
