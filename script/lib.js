@@ -119,6 +119,7 @@ $(document).ready(function () {
         game : {
             //charge un niveau et lance la boucle principale
             start : function(context) {
+                basePlayer.reset(context);
                 context.game.load(context);
                 context.game.loop(context);
             },
@@ -177,17 +178,7 @@ $(document).ready(function () {
                         context.storage.currentLevel = 0;
                         context.storage.running = false;
                         
-                        context.player.vx = 0;
-                        context.player.vy = 0;
-                        context.player.x = 40;
-                        context.player.y = 480;
-                        context.player.w = 16;
-                        context.player.h = 26;
-                        context.player.hp = 3;
-                        context.player.immune = false;
-                        context.player.floor = false;
-                        context.player.collide = false;
-                        context.player.inventory = [];
+                        basePlayer.reset(context);
                         
                         context.loadJson();
                         context.menu.hide();
@@ -202,14 +193,6 @@ $(document).ready(function () {
             running : false
         },
         player : {
-            vx : 0,
-            vy : 0,
-            x : 40,
-            y : 480,
-            w : 16,
-            h : 26,
-            hp : 3,
-            immune : false,
             constants : {
                 vxMin : -5,
                 vxMax : 5,
@@ -223,9 +206,6 @@ $(document).ready(function () {
                 bot : true,
                 right : true
             },
-            floor : false,
-            collide : false,
-            inventory : [],
             monitor : function(context) {
 
                 //reset this.constants to their initial values
@@ -459,12 +439,12 @@ $(document).ready(function () {
                         this.direction = 'left';
                     }
                 }
-                //                window.scrollTo((this.x-480), (this.y-540));
-                //                if((this.x-480) > 40) {
-                //                    $('#hp').css('left',(this.x-480)+'px');
-                //                } else {
-                //                    $('#hp').css('left','40px');
-                //                }
+            //                window.scrollTo((this.x-480), (this.y-540));
+            //                if((this.x-480) > 40) {
+            //                    $('#hp').css('left',(this.x-480)+'px');
+            //                } else {
+            //                    $('#hp').css('left','40px');
+            //                }
 
             },
             showHeart : function(hp) {
@@ -991,9 +971,9 @@ $(document).ready(function () {
         main.player.equiped = item;
         main.player.toggleInventory(main);
         main.player.toggleInventory(main);
-        //TODO remove the double toggle hack
-        //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
-        //$(this).removeClass().addClass('itemEquiped '+$(this).html());
+    //TODO remove the double toggle hack
+    //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
+    //$(this).removeClass().addClass('itemEquiped '+$(this).html());
 
     });
     
