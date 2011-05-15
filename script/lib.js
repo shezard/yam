@@ -95,12 +95,12 @@ $(document).ready(function () {
     var main = {
         //a lancer au chargement de la page, appelle le createur de menu
         autoExec : function() {
-            this.loadJson();
+            this.loadJson(this);
             this.menu.show(this);
         },
         //load le json (levels.json) puis affiche le menu
-        loadJson : function() {
-            this.levels = window.clone(window.levels);
+        loadJson : function(context) {
+            window.baseLevel.init(context);
         },
         //le createur de menu
         menu : {
@@ -180,7 +180,7 @@ $(document).ready(function () {
                         
                         basePlayer.reset(context);
                         
-                        context.loadJson();
+                        context.loadJson(context);
                         context.menu.hide();
                         context.game.load(context);
                     });
