@@ -481,6 +481,12 @@ $(document).ready(function () {
             },
 
             removeMob : function(context,i) {
+                if(context.levels[context.storage.currentLevel].blocs[i - 1].hasOwnProperty('o')) {
+                    context.player.xp += (context.levels[context.storage.currentLevel].blocs[i - 1].o.mhp || 1);
+                } else {
+                    context.player.xp += 1;
+                }
+                
                 if (context.levels[context.storage.currentLevel].blocs[i - 1].hasOwnProperty('o') && context.levels[context.storage.currentLevel].blocs[i - 1].o.hasOwnProperty('loot')) {
                     var x = context.levels[context.storage.currentLevel].blocs[i - 1].x,y = context.levels[context.storage.currentLevel].blocs[i - 1].y,b, state = '';
                     context.levels[context.storage.currentLevel].blocs[i - 1] = context.levels[context.storage.currentLevel].blocs[i - 1].o.loot;
@@ -935,6 +941,8 @@ $(document).ready(function () {
             case 32 : //space
                 main.player.useItem(main);
                 return false;
+            case 178 : //²
+                alert(main.player.xp);
         }
     });
 
