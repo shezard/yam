@@ -687,7 +687,8 @@ $(document).ready(function () {
                 }
             },
             save : function(context) {
-                alert('chekpoint');
+                //alert('chekpoint');
+                sessionStorage.setItem('save',JSON.stringify({troll : 'b'}));
             },
             toggleInventory : function(context) {
                 if(context.storage.running) {
@@ -942,7 +943,8 @@ $(document).ready(function () {
                 main.player.useItem(main);
                 return false;
             case 178 : //²
-                alert(main.player.xp);
+                //alert(main.player.xp);
+                alert(sessionStorage.getItem('save') || 'no save yet');
         }
     });
 
