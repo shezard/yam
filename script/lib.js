@@ -105,7 +105,11 @@ $(document).ready(function () {
         //le createur de menu
         menu : {
             show : function(context){
-                $('body').append('<div id="menu"><h1>Y<span class="small">et</span> A<span class="small">nother</span> M<span class="small">ario</span></h1><span id="start">Insert Me </span><br/><br/><span class="info">Controls : z &uarr;,q &larr;,d &rarr;,s Action,space Use items</span></div>');
+                $('body').append('<div id="menu"><h1>Y<span class="small">et</span> A<span class="small">nother</span> M<span class="small">ario</span></h1><span id="start">Insert Me </span><br/></div>');
+                if(localStorage.getItem('save')) {
+                    $('#menu').append('<span id="load">Load save !</span><br/><br/>');
+                }
+                $('#menu').append('<span class="info">Controls : z &uarr;,q &larr;,d &rarr;,s Action,space Use items</span></div>');
                 $('#start').click(function(){
                     context.game.start(context);
                     context.menu.hide();
@@ -172,7 +176,11 @@ $(document).ready(function () {
                 context.storage.running = false;
                 $('#gamearea').fadeOut(2000,function(){
                     window.scrollTo(0,0);
-                    $('body').append('<div id="menu"><h1>G<span class="small">ame</span> O<span class="small">ver</span></h1><span id="start">Restart ?</span></div>');
+                    $('body').append('<div id="menu"><h1>G<span class="small">ame</span> O<span class="small">ver</span></h1></div>');
+                    if(localStorage.getItem('save')) {
+                        $('#menu').append('<span id="load">Restart from Save ? </span>');
+                    }
+                    $('#menu').append('<span id="start">Restart from Scratch ? </span>');
                     $('#start').bind('click',function(){
                         
                         context.storage.currentLevel = 0;
@@ -439,12 +447,12 @@ $(document).ready(function () {
                         this.direction = 'left';
                     }
                 }
-            //                window.scrollTo((this.x-480), (this.y-540));
-            //                if((this.x-480) > 40) {
-            //                    $('#hp').css('left',(this.x-480)+'px');
-            //                } else {
-            //                    $('#hp').css('left','40px');
-            //                }
+                //                window.scrollTo((this.x-480), (this.y-540));
+                //                if((this.x-480) > 40) {
+                //                    $('#hp').css('left',(this.x-480)+'px');
+                //                } else {
+                //                    $('#hp').css('left','40px');
+                //                }
 
             },
             showHeart : function(hp) {
@@ -687,12 +695,21 @@ $(document).ready(function () {
                 }
             },
             save : function(context) {
-                //alert('chekpoint');
-                try {
-                    sessionStorage.setItem('save',JSON.stringify({troll : 'b'}));
-                } catch(e) {
-                    console.log('Your in local setup ?');
-                }
+                localStorage.setItem('save',JSON.stringify({
+                    vx : context.player.vx,
+                    vy : context.player.vy,
+                    x : context.player.x,
+                    y : context.player.y,
+                    w : context.player.w,
+                    h : context.player.h,
+                    hp : context.player.hp,
+                    xp : context.player.xp,
+                    immune : context.player.immune,
+                    floor : context.player.floor,
+                    collide : context.player.collide,
+                    inventory : context.player.inventory,
+                    level : context.storage.currentLevel
+                }));
             },
             toggleInventory : function(context) {
                 if(context.storage.running) {
@@ -948,7 +965,7 @@ $(document).ready(function () {
                 return false;
             case 178 : //²
                 //alert(main.player.xp);
-                alert(sessionStorage.getItem('save') || 'no save yet');
+                alert(localStorage.getItem('save') || 'no save yet');
         }
     });
 
@@ -985,9 +1002,9 @@ $(document).ready(function () {
         main.player.equiped = item;
         main.player.toggleInventory(main);
         main.player.toggleInventory(main);
-    //TODO remove the double toggle hack
-    //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
-    //$(this).removeClass().addClass('itemEquiped '+$(this).html());
+        //TODO remove the double toggle hack
+        //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
+        //$(this).removeClass().addClass('itemEquiped '+$(this).html());
 
     });
     
