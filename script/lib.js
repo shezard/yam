@@ -133,7 +133,7 @@ $(document).ready(function () {
                 
                 context.storage.running = false;
                 $('#gamearea').remove();
-                $('body').append('<div id="gamearea" class=level"'+context.storage.currentLevel+'"><div id="hp">'+context.player.showHeart(context.player.hp)+'</div></div>');
+                $('body').append('<div id="gamearea" class=level"'+context.storage.currentLevel+'"><div id="hp">'+context.player.showHeart(context.player.hp)+context.player.showEmptyHeart(context.player.mhp - context.player.hp)+'</div></div>');
                 for(i = 0 ; i < lvl.blocs.length ; i += 1) {
                     state = '';
                     if(lvl.blocs[i].hasOwnProperty('o')) {
@@ -482,6 +482,13 @@ $(document).ready(function () {
                 }
                 return hearts;
             },
+            showEmptyHeart : function(hp) {
+                var i,hearts = '';
+                for(i = 0 ; i < hp ; i += 1) {
+                    hearts += '<span class="heart">&hearts;<span class="emptyHeart">&hearts;</span></span>';
+                }
+                return hearts;
+            },
             killMob : function(context,i) {
                 var j,move;
                 for(j = 0 ; j < context.levels[context.storage.currentLevel].blocs.length ; j += 1) {
@@ -594,7 +601,7 @@ $(document).ready(function () {
                 if(!this.immune) {
                     this.hp -= 1;
                     $('#hp').remove();
-                    $('#gamearea').prepend('<div id="hp">'+this.showHeart(this.hp)+'</div>');
+                    $('#gamearea').prepend('<div id="hp">'+this.showHeart(this.hp)+this.showEmptyHeart(this.mhp-this.hp)+'</div>');
                     if(this.hp === 0) {
                         context.game.gameOver(context);
                     }
@@ -984,8 +991,7 @@ $(document).ready(function () {
                 main.player.useItem(main);
                 return false;
             case 178 : //²
-                //alert(main.player.xp);
-                alert(localStorage.getItem('save') || 'no save yet');
+                console.log(main.player.inventory);
         }
     });
 

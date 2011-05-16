@@ -16,6 +16,7 @@ window.basePlayer = {
         context.player.y = 480;
         context.player.w = 16;
         context.player.h = 26;
+        context.player.mhp = 3;
         context.player.hp = 3;
         context.player.xp = 0;
         context.player.immune = false;
