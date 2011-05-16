@@ -192,6 +192,26 @@ $(document).ready(function () {
                         context.menu.hide();
                         context.game.load(context);
                     });
+                    
+                    $('#load').bind('click',function() {
+                        
+                        var data,save = JSON.parse(localStorage.getItem('save'));
+                        
+                        context.storage.currentLevel = save.currentLevel;
+                        context.storage.running = false;
+                        
+                        //basePlayer.reset(context);
+                        
+                        for(data in save) {
+                            if(data !== 'currentLevel') {
+                                context.player[data] = save[data];
+                            }
+                        }
+                        
+                        context.loadJson(context);
+                        context.menu.hide();
+                        context.game.load(context);
+                    });
                 });
             }
         },
@@ -447,12 +467,12 @@ $(document).ready(function () {
                         this.direction = 'left';
                     }
                 }
-                //                window.scrollTo((this.x-480), (this.y-540));
-                //                if((this.x-480) > 40) {
-                //                    $('#hp').css('left',(this.x-480)+'px');
-                //                } else {
-                //                    $('#hp').css('left','40px');
-                //                }
+            //                window.scrollTo((this.x-480), (this.y-540));
+            //                if((this.x-480) > 40) {
+            //                    $('#hp').css('left',(this.x-480)+'px');
+            //                } else {
+            //                    $('#hp').css('left','40px');
+            //                }
 
             },
             showHeart : function(hp) {
@@ -708,7 +728,7 @@ $(document).ready(function () {
                     floor : context.player.floor,
                     collide : context.player.collide,
                     inventory : context.player.inventory,
-                    level : context.storage.currentLevel
+                    currentLevel : context.storage.currentLevel
                 }));
             },
             toggleInventory : function(context) {
@@ -1002,9 +1022,9 @@ $(document).ready(function () {
         main.player.equiped = item;
         main.player.toggleInventory(main);
         main.player.toggleInventory(main);
-        //TODO remove the double toggle hack
-        //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
-        //$(this).removeClass().addClass('itemEquiped '+$(this).html());
+    //TODO remove the double toggle hack
+    //$('.itemEquiped').removeClass().addClass('itemEquipable '+$(this).attr('class').split(' ')[1]);
+    //$(this).removeClass().addClass('itemEquiped '+$(this).html());
 
     });
     
