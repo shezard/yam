@@ -133,7 +133,7 @@ $(document).ready(function () {
                 
                 context.storage.running = false;
                 $('#gamearea').remove();
-                $('body').append('<div id="gamearea" class=level"'+context.storage.currentLevel+'"><div id="hp">'+context.player.showHeart(context.player.hp)+context.player.showEmptyHeart(context.player.mhp - context.player.hp)+'</div></div>');
+                $('body').append('<div id="gamearea" class=level"'+context.storage.currentLevel+'"><div id="hp">'+context.player.showHeart(context.player.hp)+'</div></div>');
                 for(i = 0 ; i < lvl.blocs.length ; i += 1) {
                     state = '';
                     if(lvl.blocs[i].hasOwnProperty('o')) {
@@ -195,20 +195,25 @@ $(document).ready(function () {
                     
                     $('#load').bind('click',function() {
                         
-                        var data,save = JSON.parse(localStorage.getItem('save'));
+                        var i,data,save = JSON.parse(localStorage.getItem('save'));
                         
                         context.storage.currentLevel = save.currentLevel;
                         context.storage.running = false;
+                        context.loadJson(context);
                         
-                        //basePlayer.reset(context);
-                        
+                        console.log(save);
                         for(data in save) {
                             if(data !== 'currentLevel') {
                                 context.player[data] = save[data];
+                                //remove item we already got
+                                if(data === 'inventory') {
+                                    for(i = 0 ; i < save.inventory.length ; i += 1) {
+                                        context.levels[save.inventory[i][3]].blocs[save.inventory[i][0] -1] = {};
+                                    }
+                                }
                             }
                         }
                         
-                        context.loadJson(context);
                         context.menu.hide();
                         context.game.load(context);
                     });
@@ -482,13 +487,6 @@ $(document).ready(function () {
                 }
                 return hearts;
             },
-            showEmptyHeart : function(hp) {
-                var i,hearts = '';
-                for(i = 0 ; i < hp ; i += 1) {
-                    hearts += '<span class="heart">&hearts;<span class="emptyHeart">&hearts;</span></span>';
-                }
-                return hearts;
-            },
             killMob : function(context,i) {
                 var j,move;
                 for(j = 0 ; j < context.levels[context.storage.currentLevel].blocs.length ; j += 1) {
@@ -601,7 +599,7 @@ $(document).ready(function () {
                 if(!this.immune) {
                     this.hp -= 1;
                     $('#hp').remove();
-                    $('#gamearea').prepend('<div id="hp">'+this.showHeart(this.hp)+this.showEmptyHeart(this.mhp-this.hp)+'</div>');
+                    $('#gamearea').prepend('<div id="hp">'+this.showHeart(this.hp)+'</div>');
                     if(this.hp === 0) {
                         context.game.gameOver(context);
                     }
@@ -619,7 +617,10 @@ $(document).ready(function () {
             },
             //do stuff for the collectable
             collect : function(context) {
+                //we bind each item to his own level, so we can remove the item after loading occured   
+                this.collide.push(context.storage.currentLevel);
                 this.inventory.push(this.collide);
+                console.log(this.collide);
                 context.levels[context.storage.currentLevel].blocs[(this.collide[0] -1)] = {};
                 $('#bloc-'+context.storage.currentLevel+'-'+this.collide[0]).remove();
 
@@ -751,7 +752,7 @@ $(document).ready(function () {
                 for(i = 0 ; i < this.inventory.length ; i+= 1) {
                     if(helper.indexOf(this.inventory[i][2]) === -1) {
                         helper.push(this.inventory[i][2]);
-                        if(!this.inventory[i][3]) {
+                        if(!this.inventory[i][4]) {
                             store[this.inventory[i][2]] = 1;
                         } else {
                             store[this.inventory[i][2]] = -1;
