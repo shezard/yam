@@ -632,7 +632,6 @@ $(document).ready(function () {
                 //we bind each item to his own level, so we can remove the item after loading occured   
                 this.collide.push(context.storage.currentLevel);
                 this.inventory.push(this.collide);
-                console.log(this.collide);
                 context.levels[context.storage.currentLevel].blocs[(this.collide[0] -1)] = {};
                 $('#bloc-'+context.storage.currentLevel+'-'+this.collide[0]).remove();
 
