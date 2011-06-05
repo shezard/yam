@@ -22,6 +22,28 @@ body {
     width : 500px;
 }
 
+
+.larr,.rarr,.uarr {
+    background-image: url("../img/jquery-ui-icons.png");
+    background-position: -142px -188px;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    width: 19px;
+    text-indent: 20px;
+    overflow : hidden;
+    top : 3px;
+    left : -2px;
+}
+
+.rarr {
+    background-position : -111px -188px;
+}
+
+.uarr {
+    background-position : -158px -188px;
+}
+
 h1 {
     margin : 3px 0px;
 }

@@ -109,7 +109,7 @@ $(document).ready(function () {
                 if(localStorage.getItem('save')) {
                     $('#menu').append('<span id="load">Load save !</span><br/><br/>');
                 }
-                $('#menu').append('<span class="info">Controls : z &uarr;,q &larr;,d &rarr;,s Action,space Use items</span></div>');
+                $('#menu').append('<span class="info">Controls : q <span class="larr">&larr;</span>,z <span class="uarr">&uarr;</span>,d <span class="rarr">&rarr;</span>,s Action,space Use items</span></div>');
                 $('#start').click(function(){
                     context.game.start(context);
                     context.menu.hide();
