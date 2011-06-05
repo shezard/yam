@@ -109,7 +109,7 @@ $(document).ready(function () {
                 if(localStorage.getItem('save')) {
                     $('#menu').append('<span id="load">Load save !</span><br/><br/>');
                 }
-                $('#menu').append('<span class="info">Controls : <ul><li>Q <span class="larr">&larr;</span></li><li>Z <span class="uarr">&uarr;</span></li><li>D <span class="rarr">&rarr;</span></li><li>S : Activate doors, signs, etc ...</li><li>space : Use equippeditems</li></span></ul></div>');
+                $('#menu').append('<span class="info">Controls : <ul><li>Q <span class="larr">&larr;</span></li><li>Z <span class="uarr">&uarr;</span></li><li>D <span class="rarr">&rarr;</span></li><li>S : Activate doors, signs, etc ...</li><li>space : Use equipped items</li></span></ul></div>');
                 $('#start').click(function(){
                     context.game.start(context);
                     context.menu.hide();
