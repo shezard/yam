@@ -2,12 +2,6 @@
  * basic storage, once the game is loaded the whole json is clone in lib.js
  */
 
-/*
- * Fonction de clonage
- * @author Keith Devens
- * @see http://keithdevens.com/weblog/archive/2007/Jun/07/javascript.clone
- */
-
 window.basePlayer = {
     reset : function(context) {
         context.player.vx = 0;
@@ -193,14 +187,6 @@ window.baseLevel = {
                     step : 0,
                     text : ['Closed !!']
                 }
-            },{
-                i : 15,
-                c : 'sign',
-                p : 'checkpoint',
-                x : 340,
-                y : 480,
-                w : 30,
-                h : 30
             }],
             triggers : [
             function(context){
@@ -212,6 +198,16 @@ window.baseLevel = {
                 } else {
                     return false;
                 }
+            },function(context){
+                //make a test, if true the function will be cleared
+                //if false the test will exec again & again until the requirement is meet
+                if(context.levels[0].blocs[6].o.state === 'open') {
+                    context.levels[0].blocs[13].o.text[0] = 'Open !!';
+                    return true;
+                } else {
+                    return false;
+                }
+                        
             }]
         },{
             name : 'second level',

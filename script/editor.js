@@ -157,8 +157,10 @@ $(document).ready(function () {
         var levels = [{
             blocs : []
         }];
-    
-        levels = window.levels;
+        
+        window.context = {};
+        window.baseLevel.init(window.context);
+        levels = context.levels;
         
         var bloc;
         
