@@ -17,6 +17,15 @@ window.basePlayer = {
         context.player.floor = false;
         context.player.collide = false;
         context.player.inventory = [];
+		context.player.inventory.contains = function (thing) {
+			var i = 0,inv = context.player.inventory, length = inv.length;
+			for(i; i < length ; i += 1) {
+				if(inv[i][2] === thing) {
+					return true
+				}
+			}
+			return false;
+		}
     }
 }
 
@@ -550,7 +559,17 @@ window.baseLevel = {
                 o : {
                     mhp : 10
                 }
-            }]
+            }],
+			triggers : [
+            function(context){
+                if(context.player.inventory.contains('hammer')) {
+					console.log('yay!');
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            ]
         },{
             name : 'level four',
             blocs : [{

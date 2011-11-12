@@ -866,8 +866,6 @@ $(document).ready(function () {
                         }
                     }
                 }
-            },
-            useCoin : function(context) {
             }
         },
         //contains method usable if a bloc contains the m optionnal property
@@ -948,7 +946,7 @@ $(document).ready(function () {
             }
         },
         //world constants, usefull if you change the players one and want to revert them, dont edit these props !!!
-        //they are supposed to be read only
+        //they are supposed to be read only and should be placed in a closure
         world : {
             air : {
                 vxMin : -5,
