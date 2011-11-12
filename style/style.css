@@ -128,7 +128,7 @@ h1 {
 .itemImage {
     position : relative;
     width : 16px;
-    height : 16px;
+    height : 15px;
     float : left;
     margin : 0px 6px;
 }
@@ -213,6 +213,7 @@ h1 {
 
 .dying {
     -moz-transform : rotate(180deg);
+    background-position : 0px 7px;
 }
 
 .grass {
@@ -239,10 +240,12 @@ h1 {
 
 .ghost[class~="step-0"] {
     background-image : url('../img/ghost-r.png');
+    background-position : 0 1px;
 }
 
 .ghost[class~="step-1"] {
     background-image : url('../img/ghost-l.png');
+    background-position : 0 1px;
 }
 
 .ghost_water[class~="step-0"],.ghost_water[class~="step-1"] {
