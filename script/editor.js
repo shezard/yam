@@ -74,6 +74,9 @@ $(document).ready(function () {
                 
                 if(levels[idLevel].blocs[i].hasOwnProperty('i')) {
                     
+					if(levels[idLevel].blocs[i].c.match(/(ghost|boss|ghost_water)/)) {
+						levels[idLevel].blocs[i].c += ' step-0';
+					}
                     $('#game-area').append('<div id="bloc-'+idLevel+'-'+i+'" class="common '+levels[idLevel].blocs[i].c+' '+levels[idLevel].blocs[i].p+'"></div>');
                     $('#game-area > *:last').css({
                         top : levels[idLevel].blocs[i].y+'px',

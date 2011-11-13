@@ -152,6 +152,16 @@ body {
     background-image : url('../img/ghost-l.png');
 }
 
+.ghost_water[class~="step-0"],.ghost_water[class~="step-1"] {
+    background-image : url('../img/ghost-water-r.png');
+    z-index : 25;
+}
+
+.ghost_water[class~="step-2"],.ghost_water[class~="step-3"] {
+    background-image : url('../img/ghost-water-l.png');
+    z-index : 25;
+}
+
 .door {
     background-image : url('../img/door.png');
 }
