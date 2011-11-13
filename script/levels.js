@@ -25,6 +25,18 @@ window.basePlayer = {
 				}
 			}
 			return false;
+		},
+		context.player.inventory.containsMany = function (thing,number) {
+			var count = 0,i = 0,inv = context.player.inventory, length = inv.length;
+			for(i; i < length ; i += 1) {
+				if(inv[i][2] === thing ) {
+					count += 1;
+				}
+			}
+			if (count === number) {
+				return true;
+			}
+			return false;
 		}
     }
 }

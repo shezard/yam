@@ -985,8 +985,7 @@ $(document).ready(function () {
 
     $(document).keypress(function(event){
         switch(event.which || event.keyCode) {
-			case 38 :
-				
+			case 38 : // up
             case 122 : //z
                 if(main.player.floor) {
                     main.player.vy = main.player.constants.vyMax;
@@ -1005,9 +1004,6 @@ $(document).ready(function () {
 				break;
             case 178 : //²
                 console.log(main.player.inventory);
-				break;
-			default :
-				console.log(event);
 				break;
         }
     });
