@@ -129,12 +129,14 @@ $(document).ready(function () {
             },
             //parse le level actuel et genere les divs
             load : function(context) {
+				
                 var lvl = context.levels[context.storage.currentLevel] , i, state;
                 
                 context.storage.running = false;
                 $('#gamearea').remove();
                 $('body').append('<div id="gamearea" class=level"'+context.storage.currentLevel+'"><div id="hp">'+context.player.showHeart(context.player.hp)+'</div></div>');
-                for(i = 0 ; i < lvl.blocs.length ; i += 1) {
+                window.scrollTo(0,0);
+				for(i = 0 ; i < lvl.blocs.length ; i += 1) {
                     state = '';
                     if(lvl.blocs[i].hasOwnProperty('o')) {
                         if(lvl.blocs[i].o.hasOwnProperty('state')) {

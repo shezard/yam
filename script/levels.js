@@ -548,14 +548,15 @@ window.baseLevel = {
                 h : 15
             },{
                 i : 18,
-                c : 'door open',
+                c : 'door closed',
                 p : 'openable',
                 x : 890,
                 y : 90,
                 w : 30,
                 h : 60,
-                o : {
-                    state : 'open',
+				o : {
+                    state : 'closed',
+                    required : 'hammer',
                     x : 52,
                     y : 120,
                     level : 3
@@ -571,17 +572,7 @@ window.baseLevel = {
                 o : {
                     mhp : 10
                 }
-            }],
-			triggers : [
-            function(context){
-                if(context.player.inventory.contains('hammer')) {
-					console.log('yay!');
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            ]
+            }]
         },{
             name : 'level four',
             blocs : [{
@@ -914,11 +905,38 @@ window.baseLevel = {
                 o : {
                     hp : 10
                 }
-            }],
+            },{
+				i:11,
+				c:'wall',
+				p:'blocking',
+				x:0,
+				y:510,
+				w:30,
+				h:540
+			},{
+				i:12,
+				c:'wall',
+				p:'blocking',
+				x:930,
+				y:510,
+				w:30,
+				h:540
+			},{
+				i:13,
+				c:'grass',
+				p:'blocking',
+				x:0,
+				y:1050,
+				w:960,
+				h:30
+			}],
             triggers : [
             function(context){
                 if(!context.levels[context.storage.currentLevel].blocs[9].hasOwnProperty('i')) {
                     //chargé prochain lvl ?
+					context.levels[context.storage.currentLevel].blocs[2] = {};
+					$('#bloc-4-3').fadeOut('fast');
+					window.scrollTo(0,570)
                     return true;
                 } else {
                     return false;
