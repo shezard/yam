@@ -984,7 +984,9 @@ $(document).ready(function () {
     main.autoExec();
 
     $(document).keypress(function(event){
-        switch(event.which) {
+        switch(event.which || event.keyCode) {
+			case 38 :
+				
             case 122 : //z
                 if(main.player.floor) {
                     main.player.vy = main.player.constants.vyMax;
@@ -999,20 +1001,28 @@ $(document).ready(function () {
                 break;
             case 32 : //space
                 main.player.useItem(main);
-                return false;
+                event.preventDefault();
+				break;
             case 178 : //²
                 console.log(main.player.inventory);
+				break;
+			default :
+				console.log(event);
+				break;
         }
     });
 
     $(document).keydown(function(event){
         switch(event.which) {
+			case 37 :
             case 81 :
                 main.keyboard.q = true;
                 break;
+			case 40 :
             case 83 :
                 main.keyboard.s = true;
                 break;
+			case 39 :
             case 68 :
                 main.keyboard.d = true;
                 break;
@@ -1021,12 +1031,15 @@ $(document).ready(function () {
 
     $(document).keyup(function(event){
         switch(event.which) {
+			case 37 :
             case 81 :
                 main.keyboard.q = false;
                 break;
+			case 40 :
             case 83 :
                 main.keyboard.s = false;
                 break;
+			case 39 :
             case 68 :
                 main.keyboard.d = false;
                 break;
