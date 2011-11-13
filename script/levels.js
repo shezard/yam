@@ -929,14 +929,32 @@ window.baseLevel = {
 				y:1050,
 				w:960,
 				h:30
-			}],
+			},{
+                i : 14,
+                c : 'lever on',
+                p : 'toggable',
+                y : 1020,
+                x : 840,
+                w : 30,
+                h : 30,
+                o : {
+                    state : 'on',
+                    on : function(context){
+                        env.lightOn();
+                    },
+                    off : function(context){
+                        env.lightOff();
+                    }
+                }
+            }],
             triggers : [
             function(context){
                 if(!context.levels[context.storage.currentLevel].blocs[9].hasOwnProperty('i')) {
                     //chargé prochain lvl ?
 					context.levels[context.storage.currentLevel].blocs[2] = {};
 					$('#bloc-4-3').fadeOut('fast');
-					window.scrollTo(0,570)
+					env.scroll();
+					env.lightOff();
                     return true;
                 } else {
                     return false;

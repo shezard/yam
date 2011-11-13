@@ -123,6 +123,7 @@ $(document).ready(function () {
         game : {
             //charge un niveau et lance la boucle principale
             start : function(context) {
+				context.storage.currentLevel = 4
                 basePlayer.reset(context);
                 context.game.load(context);
                 context.game.loop(context);
@@ -642,7 +643,7 @@ $(document).ready(function () {
                     if(context.levels[context.storage.currentLevel].blocs[i].hasOwnProperty('o')) {
                         if(context.levels[context.storage.currentLevel].blocs[i].o.hasOwnProperty('state')){
                             if(context.levels[context.storage.currentLevel].blocs[i].o.state === 'closed') {
-                                if(this.inventory[this.inventory.length -1][2] === context.levels[context.storage.currentLevel].blocs[i].o.required ) {
+                                if(this.inventory.contains(context.levels[context.storage.currentLevel].blocs[i].o.required) ) {
                                     context.levels[context.storage.currentLevel].blocs[i].o.state = 'open';
                                     $('#bloc-'+context.storage.currentLevel+'-'+context.levels[context.storage.currentLevel].blocs[i].i).addClass('open');
                                 }
@@ -821,7 +822,7 @@ $(document).ready(function () {
                 if (this.dir === 'right') {
                     o += this.w/2 +this.w;
                     if($('#anim').length === 0) {
-                        $('#player').append('<div id="anim" style="position:absolute;left:14px;width :15px;height:15px;-moz-transform: scaleX(-1);" class="hammer"></div>');
+                        $('#player').append('<div id="anim" style="position:absolute;left:14px;width :15px;height:15px;-webkit-transfrom: scaleX(-1);-moz-transform: scaleX(-1);" class="hammer"></div>');
                         
                         $('#anim').delay(250).animate({
                             left:'+=15'

@@ -214,6 +214,7 @@ h1 {
 
 .dying {
     -moz-transform : rotate(180deg);
+	-webkit-transform : rotate(180deg);
     background-position : 0px 7px;
 }
 
@@ -316,4 +317,12 @@ h1 {
 .boss[class~="step-0"],.boss[class~="step-3"] {
     background-image : url('../img/ghost-r.png');
     background-size : 100% 100%;
+}
+
+.lightOff {
+	background: rgba(0,0,0,0.8);
+	height: 1080px;
+	width: 960px;
+    position: absolute;
+    top: 0px;
 }
