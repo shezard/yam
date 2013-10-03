@@ -123,7 +123,7 @@ $(document).ready(function () {
         game : {
             //charge un niveau et lance la boucle principale
             start : function(context) {
-				context.storage.currentLevel = 4
+				context.storage.currentLevel = 0
                 basePlayer.reset(context);
                 context.game.load(context);
                 context.game.loop(context);
@@ -487,13 +487,6 @@ $(document).ready(function () {
                         this.direction = 'left';
                     }
                 }
-            //                window.scrollTo((this.x-480), (this.y-540));
-            //                if((this.x-480) > 40) {
-            //                    $('#hp').css('left',(this.x-480)+'px');
-            //                } else {
-            //                    $('#hp').css('left','40px');
-            //                }
-
             },
             showHeart : function(hp) {
                 var i,hearts = '';
